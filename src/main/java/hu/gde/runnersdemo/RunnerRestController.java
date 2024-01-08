@@ -61,6 +61,16 @@ public class RunnerRestController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Runner with ID " + id + " not found");
         }
     }
+
+
+    @GetMapping("/height")
+    public ResponseEntity<String> getAverageAge() {
+        double averageAge = RunnerService.getAverageHeight(runnerRepository);
+        return ResponseEntity.ok(averageAge + " is the average Height!");
+    }
+
+
+
     public static class LapTimeRequest {
         private int lapTimeSeconds;
 
