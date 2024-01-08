@@ -21,6 +21,11 @@ public class RunnerController {
     public String getAllRunners(Model model) {
         List<RunnerEntity> runners = runnerRepository.findAll();
         model.addAttribute("runners", runners);
+
+        // Átlagmagasság kiszámítása
+        double averageHeight = RunnerService.getAverageHeight(runnerRepository);
+        model.addAttribute("averageHeight", averageHeight);
+
         return "runners";
     }
 
